@@ -14,6 +14,7 @@ from .database import get_session
 router = APIRouter(prefix="/stream", tags=["streaming"])
 
 VIDEO_ROOT = Path(__file__).resolve().parent / "static" / "videos"
+ASSET_VIDEO_DIR = Path(__file__).resolve().parent / "static" / "assets" / "movies"
 CHUNK_SIZE = 1024 * 1024  # 1 MiB
 SUPPORTED_EXTENSIONS = (".mp4", ".webm", ".mkv")
 
@@ -68,24 +69,35 @@ def _candidate_filenames(movie: models.Movie) -> list[str]:
     return ordered
 
 
-def _resolve_video_path(movie: models.Movie) -> Path:
-    if not VIDEO_ROOT.exists():
+def _available_video_dirs() -> list[Path]:
+    directories = [VIDEO_ROOT, ASSET_VIDEO_DIR]
+    existing = [directory for directory in directories if directory.exists()]
+    if not existing:
         raise HTTPException(
             status_code=500,
-            detail="Video library directory is missing. Create backend/app/static/videos and add media files.",
+            detail=(
+                "Video library directories are missing. Add media files to backend/app/static/videos or "
+                "backend/app/static/assets/movies."
+            ),
         )
+    return existing
 
-    for candidate in _candidate_filenames(movie):
-        path = VIDEO_ROOT / candidate
-        if path.exists():
-            return path
 
-    expected = ", ".join(_candidate_filenames(movie))
+def _resolve_video_path(movie: models.Movie) -> Path:
+    filename_candidates = _candidate_filenames(movie)
+    for directory in _available_video_dirs():
+        for candidate in filename_candidates:
+            path = directory / candidate
+            if path.exists():
+                return path
+
+    expected = ", ".join(filename_candidates)
+    searched = ", ".join(str(directory) for directory in _available_video_dirs())
     raise HTTPException(
         status_code=404,
         detail=(
-            "Video asset not found. Expected one of the following filenames in the videos folder: "
-            f"{expected}."
+            "Video asset not found. Expected one of the following filenames in the directories "
+            f"{searched}: {expected}."
         ),
     )
 

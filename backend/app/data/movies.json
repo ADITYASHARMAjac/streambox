@@ -6,9 +6,9 @@
     "description": "A group of teens unlocks portals to dimension-twisting adventures while trying to find their missing friend.",
     "year": 2023,
     "rating": "PG-13",
-  "thumbnail_url": "assets/thumbnails/stranger-worlds.jpg",
-  "background_url": "assets/backgrounds/stranger-worlds.jpg",
-    "video_url": "/stream/1/video"
+    "thumbnail_url": "assets/thumbnails/stranger-worlds.jpg",
+    "background_url": "assets/backgrounds/stranger-worlds.jpg",
+    "video_url": "assets/movies/stranger-things.mp4"
   },
   {
     "id": 2,
@@ -17,9 +17,9 @@
     "description": "An undercover hacker races against time to prevent an energy grid collapse in a neon-soaked megacity.",
     "year": 2024,
     "rating": "PG-13",
-  "thumbnail_url": "assets/thumbnails/neon-nights.jpg",
-  "background_url": "assets/backgrounds/neon-nights.jpg",
-    "video_url": "/stream/2/video"
+    "thumbnail_url": "assets/thumbnails/neon-nights.jpg",
+    "background_url": "assets/backgrounds/neon-nights.jpg",
+    "video_url": "assets/movies/spiderman.mp4"
   },
   {
     "id": 3,
@@ -28,9 +28,9 @@
     "description": "Two musicians fall in love as they collaborate on a cross-world composition spanning alternate timelines.",
     "year": 2022,
     "rating": "PG",
-  "thumbnail_url": "assets/thumbnails/parallel-hearts.jpg",
-  "background_url": "assets/backgrounds/parallel-hearts.jpg",
-    "video_url": "/stream/3/video"
+    "thumbnail_url": "assets/thumbnails/parallel-hearts.jpg",
+    "background_url": "assets/backgrounds/parallel-hearts.jpg",
+    "video_url": "assets/movies/purple-heart.mp4"
   },
   {
     "id": 4,
@@ -39,9 +39,9 @@
     "description": "Astronauts stranded on a rogue space station uncover a mutiny as a meteor storm rushes toward them.",
     "year": 2021,
     "rating": "PG-13",
-  "thumbnail_url": "assets/thumbnails/orbitfall.jpg",
-  "background_url": "assets/backgrounds/orbitfall.jpg",
-    "video_url": "/stream/4/video"
+    "thumbnail_url": "assets/thumbnails/orbitfall.jpg",
+    "background_url": "assets/backgrounds/orbitfall.jpg",
+    "video_url": "assets/movies/orbitfall.mp4"
   },
   {
     "id": 5,
@@ -50,9 +50,9 @@
     "description": "A young historian awakens an ancient order to stop an immortal tyrant from reshaping modern Britain.",
     "year": 2020,
     "rating": "PG-13",
-  "thumbnail_url": "assets/thumbnails/echoes-of-avalon.jpeg",
-  "background_url": "assets/backgrounds/echoes-of-avalon.jpeg",
-    "video_url": "/stream/5/video"
+    "thumbnail_url": "assets/thumbnails/echoes-of-avalon.jpeg",
+    "background_url": "assets/backgrounds/echoes-of-avalon.jpeg",
+    "video_url": "assets/movies/echoes-of-avalon.mp4"
   },
   {
     "id": 6,
@@ -61,9 +61,9 @@
     "description": "An elite developer confronts her past while leading a team to build a sentient climate-defense AI.",
     "year": 2024,
     "rating": "PG-13",
-  "thumbnail_url": "assets/thumbnails/code-meridian.jpeg",
-  "background_url": "assets/backgrounds/code-meridian.jpeg",
-    "video_url": "/stream/6/video"
+    "thumbnail_url": "assets/thumbnails/code-meridian.jpeg",
+    "background_url": "assets/backgrounds/code-meridian.jpeg",
+    "video_url": "assets/movies/code-meridian.mp4"
   },
   {
     "id": 7,
@@ -72,9 +72,9 @@
     "description": "A detective who can hear emotional echoes in music hunts for a serial composer leaving sonic clues.",
     "year": 2019,
     "rating": "PG-13",
-  "thumbnail_url": "assets/thumbnails/last-lullaby.png",
-  "background_url": "assets/backgrounds/last-lullaby.png",
-    "video_url": "/stream/7/video"
+    "thumbnail_url": "assets/thumbnails/last-lullaby.png",
+    "background_url": "assets/backgrounds/last-lullaby.png",
+    "video_url": "assets/movies/last-lullaby.mp4"
   },
   {
     "id": 8,
@@ -85,7 +85,7 @@
     "rating": "PG-13",
     "thumbnail_url": "assets/thumbnails/chrono-drift.jpg",
     "background_url": "assets/backgrounds/chrono-drift.jpg",
-    "video_url": "/stream/8/video"
+    "video_url": "assets/movies/topguns.mp4"
   },
   {
     "id": 9,
@@ -96,7 +96,7 @@
     "rating": "PG",
     "thumbnail_url": "assets/thumbnails/garden-of-glass.jpg",
     "background_url": "assets/backgrounds/garden-of-glass.jpg",
-    "video_url": "/stream/9/video"
+    "video_url": "assets/movies/garden-of-glass.mp4"
   },
   {
     "id": 10,
@@ -107,6 +107,6 @@
     "rating": "PG",
     "thumbnail_url": "assets/thumbnails/sonic-bloom.jpg",
     "background_url": "assets/backgrounds/sonic-bloom.jpg",
-    "video_url": "/stream/10/video"
+    "video_url": "assets/movies/sonic-bloom.mp4"
   }
 ]
