@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>StreamBox — Now Playing</title>
-  <link rel="stylesheet" href="{{ url_for('static', path='assets/styles.css') }}" />
+  <link rel="stylesheet" href="/static/assets/styles.css" />
   </head>
   <body class="movie-body">
     <div id="pageLoader" class="page-loader page-loader--active" aria-live="polite" aria-busy="true">
@@ -182,6 +182,6 @@
       </section>
     </main>
 
-  <script type="module" src="{{ url_for('static', path='movie.js') }}"></script>
+  <script type="module" src="/static/movie.js"></script>
   </body>
 </html>

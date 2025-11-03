@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StreamBox - Netflix Clone</title>
-  <link rel="stylesheet" href="{{ url_for('static', path='assets/styles.css') }}" />
+  <link rel="stylesheet" href="/static/assets/styles.css" />
   </head>
   <body>
     <div id="pageLoader" class="page-loader page-loader--active" aria-live="polite" aria-busy="true">
@@ -128,6 +128,6 @@
       <p>&copy; <span id="year"></span> StreamBox. Built as a Netflix UI clone for demo purposes.</p>
     </footer>
 
-  <script src="{{ url_for('static', path='app.js') }}" type="module"></script>
+  <script src="/static/app.js" type="module"></script>
   </body>
 </html>
