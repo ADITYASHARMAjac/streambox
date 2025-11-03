@@ -1,0 +1,46 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Backend Server",
+			"type": "shell",
+			"command": "C:/Users/sharm/AppData/Local/Programs/Python/Python313/python.exe",
+			"args": [
+				"-m",
+				"uvicorn",
+				"app.main:app",
+				"--reload",
+				"--host",
+				"0.0.0.0",
+				"--port",
+				"8000"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/backend"
+			},
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Run Backend Tests",
+			"type": "shell",
+			"command": "C:/Users/sharm/AppData/Local/Programs/Python/Python313/python.exe",
+			"args": [
+				"-m",
+				"pytest",
+				"tests"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/backend"
+			},
+			"problemMatcher": [
+				"$python"
+			],
+			"group": "test"
+		}
+	]
+}

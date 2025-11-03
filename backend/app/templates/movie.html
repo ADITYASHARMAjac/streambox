@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StreamBox — Now Playing</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='assets/styles.css') }}" />
+  </head>
+  <body class="movie-body">
+    <div id="pageLoader" class="page-loader page-loader--active" aria-live="polite" aria-busy="true">
+      <div class="page-loader__spinner" role="status" aria-label="Loading"></div>
+      <p class="page-loader__text">Loading StreamBox…</p>
+    </div>
+    <header class="nav nav--movie">
+      <div class="nav__logo">StreamBox</div>
+      <nav class="nav__links">
+  <a href="{{ url_for('home') }}#hero" class="nav__link" data-nav="home">Home</a>
+  <a href="{{ url_for('home') }}#trending" class="nav__link" data-nav="trending">Trending</a>
+  <a href="{{ url_for('home') }}#popular" class="nav__link" data-nav="popular">Popular</a>
+  <a href="{{ url_for('home') }}#newReleases" class="nav__link" data-nav="new">New Releases</a>
+      </nav>
+      <input type="checkbox" id="navToggle" class="nav__toggle" aria-label="Toggle navigation" />
+      <label for="navToggle" class="nav__burger" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <nav class="nav__sheet">
+        <div class="nav__sheet-links">
+          <a href="{{ url_for('home') }}#hero" class="nav__link" data-nav="home">Home</a>
+          <a href="{{ url_for('home') }}#trending" class="nav__link" data-nav="trending">Trending</a>
+          <a href="{{ url_for('home') }}#popular" class="nav__link" data-nav="popular">Popular</a>
+          <a href="{{ url_for('home') }}#newReleases" class="nav__link" data-nav="new">New Releases</a>
+        </div>
+        <div class="nav__actions nav__actions--sheet">
+          <button id="movieBackButtonSheet" class="btn btn--ghost">← Back</button>
+          <a href="{{ url_for('home') }}" class="btn btn--primary">Browse All</a>
+        </div>
+      </nav>
+      <div class="nav__actions">
+        <button id="movieBackButton" class="btn btn--ghost">← Back</button>
+  <a href="{{ url_for('home') }}" class="btn btn--primary">Browse All</a>
+      </div>
+    </header>
+
+    <main class="movie-page">
+      <section class="movie-layout">
+        <div class="movie-primary">
+          <article class="movie-player">
+            <div id="movieBackdrop" class="movie-player__backdrop" aria-hidden="true"></div>
+            <video id="movieVideo" class="movie-player__video" playsinline preload="metadata"></video>
+            <div class="movie-player__overlay">
+              <div class="movie-player__top">
+                <span id="movieBadge" class="movie-player__badge"></span>
+              </div>
+              <div class="movie-player__timeline">
+                <span id="movieTimeCurrent" class="movie-player__time">0:00</span>
+                <input id="movieSeek" class="movie-player__slider" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek" />
+                <span id="movieTimeDuration" class="movie-player__time">0:00</span>
+              </div>
+              <div class="movie-player__controls">
+                <div class="movie-player__buttons">
+                  <button id="moviePlayToggle" class="player__button player__button--primary" type="button">Play</button>
+                  <button id="movieMuteToggle" class="player__button" type="button">Mute</button>
+                </div>
+                <div class="movie-player__actions">
+                  <button id="movieSettingsToggle" class="chip-button" type="button">Settings</button>
+                  <button id="movieFullscreenToggle" class="chip-button" type="button">Fullscreen</button>
+                </div>
+              </div>
+            </div>
+            <div id="movieLoader" class="player__loader" hidden></div>
+            <div id="movieError" class="player__error" hidden></div>
+            <div id="movieSettingsPanel" class="movie-settings" hidden>
+              <header class="movie-settings__header">
+                <h3>Playback Settings</h3>
+                <button id="movieSettingsClose" class="movie-settings__close" type="button" aria-label="Close settings">&times;</button>
+              </header>
+              <div class="movie-settings__section">
+                <label for="movieQualitySelect">Quality</label>
+                <select id="movieQualitySelect">
+                  <option value="auto">Auto</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+              <div class="movie-settings__section movie-settings__section--split">
+                <label for="movieCaptionsToggle" class="movie-settings__toggle">
+                  <input id="movieCaptionsToggle" type="checkbox" />
+                  <span>Captions</span>
+                </label>
+                <label for="movieSubtitleSelect">Subtitles</label>
+                <select id="movieSubtitleSelect">
+                  <option value="english">English</option>
+                  <option value="hindi">Hindi</option>
+                  <option value="spanish">Spanish</option>
+                  <option value="off">Off</option>
+                </select>
+              </div>
+              <div class="movie-settings__section">
+                <label for="movieAudioSelect">Audio</label>
+                <select id="movieAudioSelect">
+                  <option value="original">Original</option>
+                  <option value="dubbed">Dubbed</option>
+                  <option value="audio-description">Audio Description</option>
+                </select>
+              </div>
+              <p id="movieSettingsStatus" class="movie-settings__status"></p>
+            </div>
+          </article>
+
+          <section class="movie-details">
+            <header class="movie-details__header">
+              <h1 id="movieTitle">Loading…</h1>
+              <div class="movie-details__stats">
+                <span id="movieStatViews"></span>
+                <span id="movieStatUpdated"></span>
+              </div>
+            </header>
+            <div class="movie-details__meta">
+              <span id="movieYear"></span>
+              <span id="movieRating"></span>
+              <span id="movieDuration"></span>
+              <span id="movieGenre" class="chip"></span>
+            </div>
+            <p id="movieDescription" class="movie-details__description"></p>
+            <div class="movie-details__cta">
+              <button id="moviePrimaryPlay" class="btn btn--primary" type="button">Play</button>
+              <button id="movieAddList" class="btn btn--ghost" type="button">+ My List</button>
+            </div>
+            <dl class="movie-details__grid">
+              <div>
+                <dt>Starring</dt>
+                <dd id="movieCast"></dd>
+              </div>
+              <div>
+                <dt>Creators</dt>
+                <dd id="movieCreators"></dd>
+              </div>
+              <div>
+                <dt>Audio</dt>
+                <dd id="movieAudio"></dd>
+              </div>
+              <div>
+                <dt>Subtitles</dt>
+                <dd id="movieSubtitles"></dd>
+              </div>
+            </dl>
+            <section class="movie-tags">
+              <h2>Tags</h2>
+              <div id="movieTags" class="movie-tags__list"></div>
+            </section>
+          </section>
+        </div>
+        <aside class="movie-sidebar">
+          <section class="movie-sidebar__section">
+            <h2>More Like This</h2>
+            <div id="movieRecommendations" class="sidebar-list"></div>
+          </section>
+          <section class="movie-sidebar__section">
+            <h2>About</h2>
+            <p id="movieAbout" class="movie-sidebar__about"></p>
+            <ul class="movie-sidebar__facts">
+              <li><strong>Release</strong><span id="movieRelease"></span></li>
+              <li><strong>Maturity Rating</strong><span id="movieMaturity"></span></li>
+              <li><strong>Genre</strong><span id="movieSidebarGenre"></span></li>
+            </ul>
+          </section>
+        </aside>
+      </section>
+
+      <section class="movie-extras">
+        <div>
+          <h2>Episodes &amp; More</h2>
+          <p id="movieExtras" class="movie-extras__text"></p>
+        </div>
+        <div>
+          <h2>Why you'll like it</h2>
+          <ul id="movieHighlights" class="movie-extras__bullets"></ul>
+        </div>
+      </section>
+    </main>
+
+  <script type="module" src="{{ url_for('static', path='movie.js') }}"></script>
+  </body>
+</html>
